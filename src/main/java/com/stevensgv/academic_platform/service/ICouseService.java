@@ -1,6 +1,7 @@
 package com.stevensgv.academic_platform.service;
 
 import com.stevensgv.academic_platform.model.Course;
+import org.springframework.security.core.Authentication;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +14,7 @@ public interface ICouseService {
 
     Course save(Course course);
 
-    Course update(Long id, Course course);
+    Course update(Long id, Course course, Authentication authentication);
 
     void deleteById(Long id);
 }

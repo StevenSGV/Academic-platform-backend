@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,9 +40,12 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @Valid @RequestBody Course course) {
-        return ResponseEntity.ok(courseService.update(id, course));
+    @PreAuthorize("hasRole('ADMIN') or (hasRole('PROFESSOR') and @courseSecurityService.isProfessorOfCourse(#id, authentication))")
+    public ResponseEntity<Course> updateCourse(
+            @PathVariable Long id,
+            @Valid @RequestBody Course course,
+            Authentication authentication) {
+        return ResponseEntity.ok(courseService.update(id, course, authentication));
     }
 
     @DeleteMapping("/{id}")
