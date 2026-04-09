@@ -1,122 +1,122 @@
 # Academic Platform Backend
 
-Backend de una plataforma educativa desarrollado con **Spring Boot**, enfocado en la **gestión de usuarios, roles, permisos, estudiantes, profesores y cursos**, con autenticación y autorización mediante **Spring Security** y **JWT**.
+Backend for an educational platform developed with **Spring Boot**, focused on the management of **users, roles, permissions, students, professors, and courses**, with authentication and authorization implemented through **Spring Security** and **JWT**.
 
-Este proyecto fue construido a partir de una consigna académica dividida en dos etapas:
+This project was built based on a two-phase academic assignment:
 
-- **Ejercicio 1:** implementación de seguridad, autenticación y gestión de usuarios.
-- **Ejercicio 2:** ampliación funcional con modelado y CRUD de estudiantes, profesores y cursos.
-
----
-
-## Objetivo del proyecto
-
-Desarrollar una API RESTful segura para una plataforma educativa universitaria, permitiendo:
-
-- autenticación de usuarios mediante JWT,
-- control de acceso basado en roles y permisos,
-- administración de usuarios, roles y permisos,
-- gestión de estudiantes, profesores y cursos,
-- protección de rutas según el nivel de acceso del usuario.
+- **Exercise 1:** implementation of security, authentication, and user management.
+- **Exercise 2:** functional expansion with modeling and CRUD operations for students, professors, and courses.
 
 ---
 
-## Funcionalidades principales
+## Project Objective
 
-### Seguridad y autenticación
-- Autenticación de usuarios con **Spring Security**
-- Generación y validación de **JSON Web Tokens (JWT)**
-- Protección de endpoints según autenticación y autorización
-- Ruta de login pública
-- Acceso restringido según roles y permisos
+Develop a secure RESTful API for a university educational platform, allowing:
 
-### Gestión de usuarios
-- CRUD de usuarios
-- Asociación de usuarios con roles
-- Administración de roles y permisos
-- Restricción para que solo los **administradores** puedan crear o editar usuarios
-
-### Gestión académica
-- CRUD de estudiantes
-- CRUD de profesores
-- CRUD de cursos
-- Relación entre estudiantes, profesores y cursos
+- user authentication through JWT,
+- access control based on roles and permissions,
+- administration of users, roles, and permissions,
+- management of students, professors, and courses,
+- protection of routes according to the user's access level.
 
 ---
 
-## Roles del sistema
+## Main Features
 
-El sistema contempla los siguientes roles principales:
+### Security and Authentication
+- User authentication with **Spring Security**
+- Generation and validation of **JSON Web Tokens (JWT)**
+- Protected endpoints based on authentication and authorization
+- Public login endpoint
+- Restricted access according to roles and permissions
 
-- **ADMINISTRADOR**
-- **PROFESOR**
-- **ESTUDIANTE**
+### User Management
+- CRUD operations for users
+- Association of users with roles
+- Administration of roles and permissions
+- Restriction so that only **administrators** can create or update users
+
+### Academic Management
+- CRUD operations for students
+- CRUD operations for professors
+- CRUD operations for courses
+- Relationships between students, professors, and courses
 
 ---
 
-## Reglas de acceso
+## System Roles
 
-### Administrador
-Puede realizar todas las operaciones CRUD sobre:
-- usuarios
+The system includes the following main roles:
+
+- **ADMINISTRATOR**
+- **PROFESSOR**
+- **STUDENT**
+
+---
+
+## Access Rules
+
+### Administrator
+Can perform all CRUD operations on:
+- users
 - roles
-- permisos
-- estudiantes
-- profesores
-- cursos
+- permissions
+- students
+- professors
+- courses
 
-### Estudiante
-Puede:
-- consultar estudiantes
-- consultar cursos
+### Student
+Can:
+- view students
+- view courses
 
-No puede:
-- crear
-- editar
-- eliminar entidades
+Cannot:
+- create
+- update
+- delete entities
 
-### Profesor
-Puede:
-- consultar cursos
-- consultar profesores
-- consultar estudiantes
+### Professor
+Can:
+- view courses
+- view professors
+- view students
 
-### Extra opcional
-- Un profesor puede tener permiso de **edición** sobre los cursos en los que está asignado como docente.
+### Optional Extra
+- A professor may have **edit permissions** for the courses in which they are assigned as the instructor.
 
 ---
 
-## Modelo de datos
+## Data Model
 
-El proyecto contempla dos áreas principales:
+The project includes two main areas:
 
-### 1. Seguridad
-Entidades base para autenticación y autorización:
+### 1. Security
+Core entities for authentication and authorization:
 
 - **User**
 - **Role**
 - **Permission**
 
-Relaciones generales:
-- un usuario puede tener uno o varios roles
-- un rol puede tener uno o varios permisos
+General relationships:
+- one user can have one or more roles
+- one role can have one or more permissions
 
-### 2. Dominio académico
-Entidades del sistema educativo:
+### 2. Academic Domain
+Entities in the educational system:
 
 - **Student**
 - **Professor**
 - **Course**
 
-Relaciones de negocio:
-- un curso tiene **una lista de alumnos**
-- un curso tiene **un solo profesor asignado**
-- un profesor puede dictar **uno o varios cursos**
-- un alumno puede estar inscrito en **uno o varios cursos**
+Business relationships:
+- one course has **a list of students**
+- one course has **only one assigned professor**
+- one professor can teach **one or more courses**
+- one student can be enrolled in **one or more courses**
 
 ---
 
-## Tecnologías utilizadas
+## Technologies Used
 
 - **Java**
 - **Spring Boot**
@@ -131,14 +131,14 @@ Relaciones de negocio:
 
 ---
 
-## Estructura general del proyecto
+## Project Structure
 
 ```bash
 academic-platform-backend/
 ├── src/
 │   ├── main/
 │   │   ├── java/
-│   │   │   └── ... 
+│   │   │   └── ...
 │   │   │       ├── controller/
 │   │   │       ├── dto/
 │   │   │       ├── model/
