@@ -49,7 +49,7 @@ public class Professor {
     @NotNull
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false, unique = true)
-    @JsonIgnoreProperties({"password", "roles", "accountNonExpired", "accountNonLocked", "credendialsNonExpired", "enabled"})
+    @JsonIgnoreProperties({"password", "roles", "accountNonExpired", "accountNonLocked", "credentialsNonExpired", "enabled"})
     private UserSec user;
 
     @OneToMany(mappedBy = "professor")
