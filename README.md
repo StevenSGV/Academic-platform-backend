@@ -1,63 +1,55 @@
-# Academic Platform Backend
+# Academic Platform API with Spring Security & JWT
 
-Backend for an educational platform developed with **Spring Boot**, focused on the management of **users, roles, permissions, students, professors, and courses**, with authentication and authorization implemented through **Spring Security** and **JWT**.
+Backend REST API for an academic platform built with Java and Spring Boot, focused on authentication, authorization, and **role-based access control** using **Spring Security** and **JWT**.
 
-This project was built based on a two-phase academic assignment:
+This project also includes management of **users, roles, permissions, students, professors, and courses**, following a layered backend architecture.
 
-- **Exercise 1:** implementation of security, authentication, and user management.
-- **Exercise 2:** functional expansion with modeling and CRUD operations for students, professors, and courses.
+## Overview
 
----
+- secure authentication with JWT
+- authorization based on roles and permissions
+- protected REST endpoints
+- academic entity management
+- layered architecture with Spring Boot
 
-## Project Objective
+It was designed as a backend application where security is one of the central components of the system.
 
-Develop a secure RESTful API for a university educational platform, allowing:
+## Features
 
-- user authentication through JWT,
-- access control based on roles and permissions,
-- administration of users, roles, and permissions,
-- management of students, professors, and courses,
-- protection of routes according to the user's access level.
+### Security and Access Control
+- Authentication with **Spring Security**
+- Token-based authentication using **JWT**
+- Protected endpoints based on user authentication
+- Authorization using **roles and permissions**
+- Public authentication endpoint for login
+- Access restriction depending on the user's role
 
----
-
-## Main Features
-
-### Security and Authentication
-- User authentication with **Spring Security**
-- Generation and validation of **JSON Web Tokens (JWT)**
-- Protected endpoints based on authentication and authorization
-- Public login endpoint
-- Restricted access according to roles and permissions
-
-### User Management
-- CRUD operations for users
-- Association of users with roles
-- Administration of roles and permissions
-- Restriction so that only **administrators** can create or update users
+### User and Security Management
+- CRUD operations for **users**
+- CRUD operations for **roles**
+- CRUD operations for **permissions**
+- Association between users, roles, and permissions
+- Administrative control over security-related entities
 
 ### Academic Management
-- CRUD operations for students
-- CRUD operations for professors
-- CRUD operations for courses
+- CRUD operations for **students**
+- CRUD operations for **professors**
+- CRUD operations for **courses**
 - Relationships between students, professors, and courses
 
----
+## Roles
 
-## System Roles
-
-The system includes the following main roles:
+The system includes three main roles:
 
 - **ADMINISTRATOR**
 - **PROFESSOR**
 - **STUDENT**
 
----
-
 ## Access Rules
 
 ### Administrator
-Can perform all CRUD operations on:
+Has full access to manage:
+
 - users
 - roles
 - permissions
@@ -65,71 +57,61 @@ Can perform all CRUD operations on:
 - professors
 - courses
 
-### Student
-Can:
-- view students
-- view courses
-
-Cannot:
-- create
-- update
-- delete entities
-
 ### Professor
-Can:
-- view courses
-- view professors
-- view students
+Can access academic information such as:
 
-### Optional Extra
-- A professor may have **edit permissions** for the courses in which they are assigned as the instructor.
+- professors
+- students
+- courses
 
----
+### Student
+Can access read-only academic information such as:
+
+- students
+- courses
 
 ## Data Model
 
-The project includes two main areas:
+The project is divided into two main domains:
 
-### 1. Security
-Core entities for authentication and authorization:
+### Security Domain
+Handles authentication and authorization through:
 
 - **User**
 - **Role**
 - **Permission**
 
-General relationships:
-- one user can have one or more roles
-- one role can have one or more permissions
+Relationships include:
 
-### 2. Academic Domain
-Entities in the educational system:
+- a user can have one or more roles
+- a role can have one or more permissions
+
+### Academic Domain
+Handles the educational platform entities:
 
 - **Student**
 - **Professor**
 - **Course**
 
-Business relationships:
-- one course has **a list of students**
-- one course has **only one assigned professor**
-- one professor can teach **one or more courses**
-- one student can be enrolled in **one or more courses**
+Relationships include:
 
----
+- one course can contain multiple students
+- one course is assigned to one professor
+- one professor can teach multiple courses
+- one student can enroll in multiple courses
 
 ## Technologies Used
 
-- **Java**
-- **Spring Boot**
-- **Spring Web**
-- **Spring Security**
-- **JWT**
-- **Spring Data JPA**
-- **Hibernate**
-- **MySQL**
-- **Maven**
-- **Postman**
-
----
+- Java
+- Spring Boot
+- Spring Web
+- Spring Security
+- JWT
+- Spring Data JPA
+- Hibernate
+- MySQL
+- Maven
+- Postman
 
 ## Project Structure
 
